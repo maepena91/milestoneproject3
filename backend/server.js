@@ -9,14 +9,10 @@ const bodyParser = require("body-parser")
 const defineCurrentUser = require("./middleware/defineCurrentUser")
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-    console.log("Connected to mongoDB at", process.env.MONGO_URI);
+    console.log("Connected to mongoDB");
 });
 
-app.use(cors({
-    origin: "http://localhost:3000",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());

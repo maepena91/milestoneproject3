@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -22,10 +22,12 @@ export default function CreateWorkout() {
         await fetch("/workouts/", {
             method: "POST",
             headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(workout)
         });
+        // console.log(workout)
     setWorkout({workout})
     navigate("/");
     };
@@ -56,6 +58,7 @@ export default function CreateWorkout() {
                                 id="type"
                                 name="type"
                             >
+                                <option></option>
                                 <option value="Upper body">Upper Body</option>
                                 <option value="Lower body">Lower Body</option>
                                 <option value="Full body">Full Body</option>

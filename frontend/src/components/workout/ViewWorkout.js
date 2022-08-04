@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-
 export default function ReadWorkout() {
     const navigate = useNavigate();
 
@@ -25,13 +24,16 @@ export default function ReadWorkout() {
 
     const deleteWorkout = async (id) => {
         await fetch(`/workouts/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
             method: "DELETE"
         });
     };
 
     return (
         <div className="content">
-            <h1>Welcome back</h1>
+            <h1>Welcome back {}</h1>
             <div>
                 {workouts.map((workout) => {
                     return (

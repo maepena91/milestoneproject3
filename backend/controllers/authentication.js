@@ -16,16 +16,19 @@ router.post("/", async (req, res) => {
     };
 });
 
-router.post("/logout", (req, res) => {
-    req.currentUser = null
-    res.status(200).json(req.currentUser)
-})
+// router.post("/logout", (req, res) => {
+//     req.currentUser = null
+//     res.status(200).json(req.currentUser)
+// })
 
 router.get('/profile', async (req, res) => {
+    // res.setHeader('Authorization', 'Bearer')
     try {
-        res.json(req.currentUser)
+        // console.log("req.currentUser", req.currentUser)
+        // res.json(req.currentUser)
     } catch (err) {
-        res.send(err.message)
+        console.log(err)
+        // res.send(err.message)
     }
 })
 
